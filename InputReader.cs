@@ -1,17 +1,23 @@
 using System;
 using System.IO;
-
+using System.Collections.Generic;
+using replyChallenge2019;
 public class InputReader{
 
-    string[] map;
-    string[] customOffice;
+    /* to get one position of the map
+     * if we want the position x=3 and y=5
+     * we do map[4].strAt(3)
+     */
+    List<string> map;
 
-    /*N: the width of the map
-      M: the height of the map
-      C: the number of Customer Headquarters
-      R: representing the maximum number of Reply Offices that can be built*/
+    /* mapInfo contains :
+      1: the width of the map
+      2: the height of the map
+      3: the number of Customer Headquarters
+      4: representing the maximum number of Reply Offices that can be built*/
 
     string mapInfo;
+    List<Offices> officesList;
     int currentLine = 0;
 
     public InputReader(string path){
@@ -23,13 +29,18 @@ public class InputReader{
 
             while ((line = sr.ReadLine()) != null) //map init loop
                 {
-                    if(currentLine = 0){
-                        mapInfo = line; 
+                    if(this.currentLine == 0){
+                        this.mapInfo = line; 
+                        this.currentLine++;
+                        continue;
                     }
-                    
-
-
-                    currentLine++;
+                    if(this.currentLine <= this.mapInfo.valAt(3)){
+                        this.officesList.Add(new Offices(line.valAt(1), line.valAt(2), line.valAt(3)));
+                    }
+                    else{
+                        this.map.Add(line);
+                    }
+                    this.currentLine++;
                 }    
             }
 
@@ -40,4 +51,5 @@ public class InputReader{
             Console.WriteLine(e.Message);
         }
     }
+
 }
