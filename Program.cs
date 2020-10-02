@@ -12,10 +12,10 @@ namespace ReplyChallenge
             string[] lines = { "test 1", "test2", "jsp" };
             System.Console.WriteLine(generateOutput(lines));
         }
-        /* string generateOneLine(int x, int y, string line){
+        /*string generateOneLine(int x, int y, string line){
             string line=x.ToString()+" "+y.ToString()+" "+line.ToString();
             return line;
-        } */
+        }*/
         
         static bool generateOutput(string[] lines){
             using (System.IO.StreamWriter file =
